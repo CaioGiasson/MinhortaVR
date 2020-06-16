@@ -11,7 +11,12 @@ public class LuzOutrosAP : MonoBehaviour {
 		acende = Random.Range ( 18, 20 );
 		apaga = Random.Range ( 21, 24 );
 		potencia = Random.Range ( 2, 5f );
-		luz.color = Color.Lerp ( Color.yellow, Color.white, Random.Range ( 0, 1 ) );
+		//luz.color = Color.Lerp ( Color.yellow, Color.white, Random.Range ( 0, 1 ) );
+		luz.color = new Color (
+			Random.Range ( 200, 255 ),
+			Random.Range ( 200, 255 ),
+			0
+		);
 	}
 
 	void Update ( ) {

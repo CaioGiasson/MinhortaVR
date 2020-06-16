@@ -46,16 +46,45 @@ public class DiaNoite : MonoBehaviour {
 			0
 		) );
 
-		if ( horario < 5 ) intensidade = 0;
-		else if ( horario < 6 ) intensidade = horario - 5;
-		else if ( horario < 12 ) intensidade = 1;
-		else if ( horario < 18 ) intensidade = 1;
-		else if ( horario < 19 ) intensidade = 19 - horario;
-		else intensidade = 0;
+		if ( horario < 5 ) {
+			intensidade = 0;
+		}
+		else if ( horario < 6 ) {
+			intensidade = horario - 5;
+		}
+		else if ( horario < 12 ) {
+			intensidade = 1;
+
+			//float i = ( horario - 6 ) / 6;
+			//Sol.color = Color.Lerp (
+			//	new Color(125, 100, 90),
+			//	Color.blue,
+			//	i
+			//);
+
+		}
+		else if ( horario < 18 ) {
+			intensidade = 1;
+
+			//float i = ( horario - 12 ) / 6;
+			//Sol.color = Color.Lerp (
+			//	new Color ( 125, 100, 90 ),
+			//	Color.blue,
+			//	i
+			//);
+
+		}
+		else if ( horario < 19 ) {
+			intensidade = 19 - horario;
+		}
+		else {
+			intensidade = 0;
+		}
 
 		Sol.intensity = intensidade * 2;
 		if ( usarSoisFake ) foreach ( Light l in fakeSol ) l.intensity = fakeIntensidade * intensidade;
 
+		// COLOR LERP É PRA FAZER UMA TRANSIÇÃO GRADUAL DE COR EM VEZ DE TROCAR BRUSCAMENTE
 		RenderSettings.fogColor = Color.Lerp ( fognight, fogday, intensidade * intensidade * intensidade );
 	}
 
